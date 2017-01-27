@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -105,10 +104,6 @@ namespace Telegraph.Net
                 }
             );
 
-#if DEBUG
-            File.AppendAllLines("request.txt", new[] { "/" + methodName, requestBody });
-#endif
-
             var content = new FormUrlEncodedContent(
                 JsonConvert.DeserializeObject<Dictionary<string, object>>(requestBody).Select(e => new KeyValuePair<string, string>(e.Key, e.Value.ToString()))
             );
@@ -122,10 +117,6 @@ namespace Telegraph.Net
                     ).Content.ReadAsStringAsync();
 
             var response = JsonConvert.DeserializeObject<TelegraphResponse<TR>>(responseBody);
-
-#if DEBUG
-            File.AppendAllLines("request.txt", new[] { responseBody, "" });
-#endif
 
             if (!response.Ok)
                 throw new TelegraphApiException(response.Error);

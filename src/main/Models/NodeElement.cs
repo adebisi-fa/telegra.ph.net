@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Telegraph.Net.Models
 {
@@ -50,7 +44,7 @@ namespace Telegraph.Net.Models
                 return new
                 {
                     tag = Tag,
-                    attrs = Attributes,
+                    attrs = Attributes != null && Attributes.Any() ? Attributes : null,
                     children = Children?.Select(c => c?.ToRequestObject()).Where(c => c != null)
                 };
             }

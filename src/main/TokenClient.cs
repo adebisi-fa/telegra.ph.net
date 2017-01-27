@@ -135,7 +135,7 @@ namespace Telegraph.Net
                         AccessToken = _accessToken,
                         AuthorName = authorName,
                         AuthorUrl = authorUrl,
-                        Content = content,
+                        Content = content.ToRequestObjects(),
                         ReturnContent = returnContent,
                         Title = title
                     }

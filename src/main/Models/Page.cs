@@ -40,7 +40,7 @@ namespace Telegraph.Net.Models
         [JsonProperty("total_count")]
         public int TotalCount { get; set; }
 
-        public List<Page> Page { get; set; }
+        public List<Page> Pages { get; set; }
     }
 
     public class PageViews
