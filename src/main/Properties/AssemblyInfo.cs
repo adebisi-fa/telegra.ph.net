@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("main")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Adfa.Telegraph.Net")]
+[assembly: AssemblyDescription("A .Net Wrapper for the Telegra.ph API")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("main")]
+[assembly: AssemblyCompany("Adfa")]
+[assembly: AssemblyProduct("Adfa.Telegraph.Net")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

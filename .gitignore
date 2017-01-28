@@ -250,3 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/src/main/nuget/lib/net45/Adfa.Telegraph.Net.dll
+/src/main/nuget.exe

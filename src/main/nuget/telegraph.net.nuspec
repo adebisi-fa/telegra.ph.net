@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<package >
+  <metadata>
+    <id>Telegraph.Net</id>
+    <version>1.0.0</version>
+    <title>Telegra.ph API for .Net</title>
+    <authors>Adebisi Foluso A.</authors>
+    <owners>Adebisi Foluso A.</owners>
+    <licenseUrl>https://github.com/adebisi-fa/telegra.ph.net/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/adebisi-fa/telegra.ph.net</projectUrl>
+    <iconUrl>https://altdstore.blob.core.windows.net/a2l/plain-nuget.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Telegra.ph API for .Net Developers.</description>
+    <releaseNotes>Complete implementation of a fully-tested .Net Wrapper for the Telegra.ph API.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Telegra.ph .Net</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+    </dependencies>
+  </metadata>
+</package>
