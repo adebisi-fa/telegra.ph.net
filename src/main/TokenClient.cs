@@ -22,7 +22,7 @@ namespace Telegraph.Net
         /// Use this method to revoke access_token and generate a new one, for example, if the user would like to reset all connected sessions, or you have reasons to believe the token was compromised. On success, returns an Account object with new access_token and auth_url fields.
         /// </summary>
         /// <returns>Returns an Account object with new access_token and auth_url fields.</returns>
-        public async Task<Account> RevokeAccessToken()
+        public async Task<Account> RevokeAccessTokenAsync()
         {
             return (await _client.PostAsync<RevokeAccessTokenRequest, Account>(
                 "revokeAccessToken",
@@ -38,7 +38,7 @@ namespace Telegraph.Net
         /// This can be specified as a flagged enum, viz: AccountFields.ShortName | AccountFields.AuthorName | AccountFields.PageCount.
         /// </param>
         /// <returns>Returns an Account object on success.</returns>
-        public async Task<Account> GetAccountInformation(AccountFields flaggedFields = AccountFields.ShortName | AccountFields.AuthorName | AccountFields.AuthorUrl)
+        public async Task<Account> GetAccountInformationAsync(AccountFields flaggedFields = AccountFields.ShortName | AccountFields.AuthorName | AccountFields.AuthorUrl)
         {
             Func<AccountFields, AccountFields, bool> isIncluded =
                 (combinedFields, fieldToTest) => (combinedFields & fieldToTest) == fieldToTest;
@@ -56,7 +56,7 @@ namespace Telegraph.Net
                 if (isIncluded(flaggedFields, entry.Key))
                     fields.Add(entry.Value);
 
-            return await GetAccountInformationByString(fields.ToArray());
+            return await GetAccountInformationByStringAsync(fields.ToArray());
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Telegraph.Net
         /// List of account fields to return. Available fields: short_name, author_name, author_url, auth_url, page_count.  
         /// </param>
         /// <returns>Returns an Account object on success.</returns>
-        public async Task<Account> GetAccountInformationByString(string[] fields = null) =>
+        public async Task<Account> GetAccountInformationByStringAsync(string[] fields = null) =>
             (await _client.PostAsync<GetAccountInfoRequest, Account>(
                 "getAccountInfo",
                 new GetAccountInfoRequest() { AccessToken = _accessToken, Fields = fields }
@@ -79,7 +79,7 @@ namespace Telegraph.Net
         /// <param name="authorName">New default author name used when creating new articles.</param>
         /// <param name="authorUrl">New default profile link, opened when users click on the author's name below the title. Can be any link, not necessarily to a Telegram profile or channel.</param>
         /// <returns>An Account object with the default fields.</returns>
-        public async Task<Account> EditAccountInformation(string shortName, string authorName, string authorUrl) =>
+        public async Task<Account> EditAccountInformationAsync(string shortName, string authorName, string authorUrl) =>
             (await _client.PostAsync<EditAccountInfoRequest, Account>("editAccountInfo", new EditAccountInfoRequest()
             {
                 AccessToken = _accessToken,
@@ -97,7 +97,7 @@ namespace Telegraph.Net
         /// <param name="authorUrl">Profile link, opened when users click on the author's name below the title. Can be any link, not necessarily to a Telegram profile or channel.</param>
         /// <param name="returnContent">If true, a content field will be returned in the Page object.</param>
         /// <returns> On success, returns a Page object.</returns>
-        public async Task<Page> CreatePage(string title, NodeElement[] content, string authorName = null,
+        public async Task<Page> CreatePageAsync(string title, NodeElement[] content, string authorName = null,
             string authorUrl = null, bool returnContent = false)
         {
             return (
@@ -125,7 +125,7 @@ namespace Telegraph.Net
         /// <param name="authorUrl">Profile link, opened when users click on the author's name below the title. Can be any link, not necessarily to a Telegram profile or channel.</param>
         /// <param name="returnContent">If true, a content field will be returned in the Page object.</param>
         /// <returns>On success, returns a Page object.</returns>
-        public async Task<Page> EditPage(string path, string title, NodeElement[] content, string authorName = null, string authorUrl = null, bool returnContent = false)
+        public async Task<Page> EditPageAsync(string path, string title, NodeElement[] content, string authorName = null, string authorUrl = null, bool returnContent = false)
         {
             return (
                 await _client.PostAsync<PageRequest, Page>(
@@ -149,7 +149,7 @@ namespace Telegraph.Net
         /// <param name="offset">Sequential number of the first page to be returned. (default = 0)</param>
         /// <param name="limit">Limits the number of pages to be retrieved. (0 - 200, default = 50)</param>
         /// <returns>Returns a PageList object, sorted by most recently created pages first.</returns>
-        public async Task<PageList> GetPageList(int offset, int limit)
+        public async Task<PageList> GetPageListAsync(int offset, int limit)
         {
             return (
                 await _client.PostAsync<GetPageListRequest, PageList>(

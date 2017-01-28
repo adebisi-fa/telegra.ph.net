@@ -20,7 +20,7 @@ namespace TestConsole
         [Fact]
         public void ShouldBeAbleToCreatePage()
         {
-            var page = _tokenClient.CreatePage(
+            var page = _tokenClient.CreatePageAsync(
                 title: "Sample Page",
                 authorName: "Anonymous",
                 returnContent: true,
@@ -39,7 +39,7 @@ namespace TestConsole
         [Fact]
         public void ShouldBeAbleToGetAPage()
         {
-            var page = _tokenClient.CreatePage(
+            var page = _tokenClient.CreatePageAsync(
                title: "Sample Page",
                authorName: "Anonymous",
                returnContent: true,
@@ -48,17 +48,17 @@ namespace TestConsole
                }.ToArray()
            ).Result;
 
-            var pageRetrieved = _client.GetPage(page.Path).Result;
+            var pageRetrieved = _client.GetPageAsync(page.Path).Result;
             Assert.Null(pageRetrieved.Content);
 
-            pageRetrieved = _client.GetPage(page.Path, true).Result;
+            pageRetrieved = _client.GetPageAsync(page.Path, true).Result;
             Assert.NotNull(pageRetrieved.Content);
         }
 
         [Fact]
         public void ShouldBeAbleToEditAPage()
         {
-            var page = _tokenClient.CreatePage(
+            var page = _tokenClient.CreatePageAsync(
                 title: "Sample Page",
                 authorName: "Anonymous",
                 returnContent: true,
@@ -72,7 +72,7 @@ namespace TestConsole
 
 
             // Update the page and get the modified copy from the server
-            var modifiedPage = _tokenClient.EditPage(
+            var modifiedPage = _tokenClient.EditPageAsync(
                 page.Path,
                 page.Title,
                 page.Content.ToArray(),
@@ -103,14 +103,14 @@ namespace TestConsole
         [Fact]
         public void ShouldBeAbleToGetPageViews()
         {
-            var response = _client.GetViews("Sample-Page-12-15", 2016, 12).Result;
+            var response = _client.GetViewsAsync("Sample-Page-12-15", 2016, 12).Result;
             Assert.Equal(40, response.Views);
         }
 
         [Fact]
         public void ShouldBeAbleToGetPageList()
         {
-            var response = _tokenClient.GetPageList(0, 40).Result;
+            var response = _tokenClient.GetPageListAsync(0, 40).Result;
 
             // Was 1227 as at when this code was written.
             // Should be more than now!

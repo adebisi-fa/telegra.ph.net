@@ -42,7 +42,7 @@ namespace Telegraph.Net
         /// <param name="path">Required. Path to the Telegraph page (in the format Title-12-31, i.e. everything that comes after http://telegra.ph/).</param>
         /// <param name="returnContent">If true, content field will be returned in Page object.</param>
         /// <returns>Returns a Page object on success.</returns>
-        public async Task<Page> GetPage(string path, bool returnContent = false)
+        public async Task<Page> GetPageAsync(string path, bool returnContent = false)
         {
             return (
                 await PostAsync<GetPageRequest, Page>(
@@ -62,7 +62,7 @@ namespace Telegraph.Net
         /// <param name="day">Required if hour is passed. If passed, the number of page views for the requested day will be returned.</param>
         /// <param name="hour">If passed, the number of page views for the requested hour will be returned.</param>
         /// <returns>Returns a PageViews object on success. By default, the total number of page views will be returned.</returns>
-        public async Task<PageViews> GetViews(string path, int? year = null, int? month = null, int? day = null, int? hour = null)
+        public async Task<PageViews> GetViewsAsync(string path, int? year = null, int? month = null, int? day = null, int? hour = null)
         {
             // Do some validations!
 

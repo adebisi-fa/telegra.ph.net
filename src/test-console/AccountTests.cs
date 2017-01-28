@@ -25,7 +25,7 @@ namespace TestConsole
         public void ShouldBeAbleToGetAccountInformation()
         {
             var tokenClient = _client.GetTokenClient("b968da509bb76866c35425099bc0989a5ec3b32997d55286c657e6994bbb");
-            var acctInfo = tokenClient.GetAccountInformation(AccountFields.ShortName | AccountFields.PageCount).Result;
+            var acctInfo = tokenClient.GetAccountInformationAsync(AccountFields.ShortName | AccountFields.PageCount).Result;
             Assert.Equal("Sandbox",acctInfo.ShortName);
             Assert.True(acctInfo.PageCount > 1211);
             Assert.Null(acctInfo.AuthorName);
@@ -40,7 +40,7 @@ namespace TestConsole
             var tokenClient = _client.GetTokenClient(result.AccessToken);
 
             // Revoke the access token of the new account
-            var acctInfo = tokenClient.RevokeAccessToken().Result;
+            var acctInfo = tokenClient.RevokeAccessTokenAsync().Result;
 
             // Check for new access_token and new authorization url
             Assert.NotNull(acctInfo.AccessToken);
@@ -57,10 +57,10 @@ namespace TestConsole
 
             // Update account information
             var acctInfo =
-                tokenClient.EditAccountInformation("Sandbox-Edited", "Anonymous-Edited", "http://google.com").Result;
+                tokenClient.EditAccountInformationAsync("Sandbox-Edited", "Anonymous-Edited", "http://google.com").Result;
 
             // Get account information
-            var updateAcctInfo = tokenClient.GetAccountInformation().Result;
+            var updateAcctInfo = tokenClient.GetAccountInformationAsync().Result;
 
             // Ensure updated and retrieved account information match
             Assert.Equal(updateAcctInfo.AuthorName, acctInfo.AuthorName);
