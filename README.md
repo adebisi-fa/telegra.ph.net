@@ -59,31 +59,29 @@ Methods that doesn't require access-token can be called directly on the **Telegr
 int views = await client.GetViewsAsync("page-path", year: 2016, month: 12);
 
 // Get a page information
-Page page = await client.GetPage("page-path", returnContent: true);
+Page page = await client.GetPageAsync("page-path", returnContent: true);
 
 // Create a new Telegra.ph Account
-Account newAccount = await client.CreateAccount("Sandbox", "Anonymous", "http://sandbox.net");
+Account newAccount = await client.CreateAccountAync("Sandbox", "Anonymous", "http://sandbox.net");
 ```
 
 # Working with NodeElements
 
-According to [Telegraph API page](http://telegra.ph/api#NodeElement): *A **Node** represents a DOM Node. It can be a String which represents a DOM text node or a NodeElement object.*  
+According to [Telegraph API page](http://telegra.ph/api#NodeElement): *A* **Node** *represents a DOM Node. It can be a String which represents a DOM text node or a NodeElement object.*  
 
-To simplify working with this concept, all **Node**s is a **NodeElement** in this library.  That is, a string is a NodeElement.  A text content like "Hello World!" can thus be expressed as:
+To simplify working with this concept while using this library, all **Node**s is a **NodeElement**.  This means that, a string is a NodeElement; thus, a text content like **"Hello World!"** can thus be expressed as:
 
 ```c#
 NodeElement nodeElement = new NodeElement {
-  Tag = "_text",
-  Attributes = new Dictionary<string, string> {
-    { "value", "Hello World!" }
-  }
+    Tag = "_text",
+    Attributes = new Dictionary<string, string> { { "value", "Hello World!" } }
 };
 ```
-or preferably, simply as:
+OR preferably (*and the recommended way*), simply as:
 ```c#
 NodeElement nodeElement = "Hello World!";
 ```
-taking advantage of implicit operator overloading for string<-->NodeElement.
+This shorthand takes advantage of implicit operator overloading for string<-->NodeElement.
 
 Thus, the following json content:
 ```json
