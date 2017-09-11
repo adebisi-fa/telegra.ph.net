@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Telegraph.Net</PackageId>
+    <PackageVersion>2.0.0</PackageVersion>
+    <authors>Adebisi Foluso A., Zaid Al-Omari</authors>
+    <Description>An MVC-like framework to create Telegram bots</Description>
+    <licenseUrl>https://github.com/Zaid-Al-Omari/telegra.ph.net/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Zaid-Al-Omari/telegra.ph.net</projectUrl>
+    <iconUrl>https://altdstore.blob.core.windows.net/a2l/plain-nuget.png</iconUrl>
+    <description>Telegra.ph API for .Net Developers.</description>
+    <releaseNotes>Complete implementation of a fully-tested .Net Wrapper for the Telegra.ph API.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Telegra.ph .Net</tags>
+    <Copyright>Copyright 2017 (c) Adebisi Foluso A., Zaid Al-Omari. All rights reserved.</Copyright>
+    <PackageTags>Telegra.ph .Net</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>
